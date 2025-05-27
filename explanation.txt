@@ -1,0 +1,45 @@
+===  How I Structured the Code  ===
+ 
+1.Defined a class MobiusStrip to encapsulate all logic and ensure modularity.
+
+2.Used the constructor __init__ to accept radius R, width w, and resolution n.
+
+3.Created a private _generate_mesh method to compute the 3D parametric mesh.
+
+4.Separated surface area and edge length logic into distinct, reusable methods.
+
+5.Included a plot() method using matplotlib to visualize the Möbius strip.
+
+6.Added a __main__ block to initialize the class and execute all functions cleanly.
+
+
+
+===  How I Approximated Surface Area ===
+ 
+1.Computed partial derivatives of the surface with respect to u and v using numpy.gradient.
+
+2.Calculated the cross product of these partials to get local surface normal vectors.
+
+3.Took the magnitude of the cross product to obtain the surface area element dA.
+
+4.Applied scipy.integrate.simpson to integrate dA over the u-v grid.
+
+5.Ensured correct resolution and mesh symmetry for better integration accuracy.
+
+6.The double integration approximates the continuous surface area numerically.
+
+
+
+===  Challenges I Faced  ===
+                      
+1.The deprecated simps function caused an import error — replaced with simpson.
+
+2.Balancing performance vs. accuracy when increasing mesh resolution (n).
+
+3.Ensuring correct vector math for cross product calculations across the grid.
+
+4.Visualizing the Möbius twist properly required careful grid alignment.
+
+5.Edge length calculation had to be adjusted for numerical stability over a looped path.
+
+6.Debugging integration boundaries and ensuring the correct orientation of derivatives.
